@@ -1,7 +1,7 @@
 const Article = require("../models/article");
-const {NotFoundError} = require("../utils/errors/NotFoundError");
-const {BadRequestError} = require("../utils/errors/BadRequestError");
-const {ForbiddenError} = require("../utils/errors/ForbiddenError");
+const NotFoundError = require("../utils/errors/NotFoundError");
+const BadRequestError = require("../utils/errors/BadRequestError");
+const ForbiddenError = require("../utils/errors/ForbiddenError");
 
 const getArticles = (req, res, next) => {
   const currentUser = req.user._id;
@@ -44,7 +44,7 @@ const deleteArticle = (req, res, next) => {
     .then((article) => {
       if (article.owner.toString() !== req.user._id) {
         return next(
-          new ForbiddenError("Invalid permissions to delete article"),
+          new ForbiddenError("Invalid permissions to delete article")
         );
       }
       return Article.deleteOne({ _id: articleId })

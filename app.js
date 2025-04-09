@@ -5,7 +5,9 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const app = express();
-const { PORT = 3001 } = process.env;
+
+const { DB_CONNECTION_STRING, PORT } = require("./utils/config");
+const process = require("process");
 
 const { errors } = require("celebrate");
 const mainRouter = require("./routes/index");
@@ -13,11 +15,14 @@ const errorHandler = require("./middlewares/errorHandler");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/newsExplorer_db")
+  .connect(DB_CONNECTION_STRING)
   .then(() => {
-    console.log("Connected do DB");
+    console.log("Connected to DB news_explorer_db");
   })
-  .catch(console.error);
+  .catch((err) => {
+    console.error("Error connecting to MongoDB", err.message);
+    process.exit(1);
+  });
 
 app.use(express.json());
 

@@ -6,10 +6,11 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-const { DB_CONNECTION_STRING, PORT } = require("./utils/config");
 const process = require("process");
 
 const { errors } = require("celebrate");
+
+const { DB_CONNECTION_STRING, PORT } = require("./utils/config");
 const mainRouter = require("./routes/index");
 const errorHandler = require("./middlewares/errorHandler");
 const { requestLogger, errorLogger } = require("./middlewares/logger");

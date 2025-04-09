@@ -74,7 +74,7 @@ module.exports.validateUserLogin = celebrate({
 
 module.exports.validateArticleId = celebrate({
   params: Joi.object().keys({
-    itemId: Joi.string().hex().length(24).required().messages({
+    articleId: Joi.string().hex().length(24).required().messages({
       "string.empty": 'The "id" field can not be empty',
       "string.length": 'The "id" field must have a length of 24',
     }),

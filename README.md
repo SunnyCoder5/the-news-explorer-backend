@@ -1,3 +1,3 @@
 The following domain is used for this project:
 
-marychud.jumpingcrab.com
+'https://api.marychud.jumpingcrab.com'

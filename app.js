@@ -44,6 +44,8 @@ app.use(errorLogger);
 app.use(errors());
 
 app.use(errorHandler);
+console.log("Environment PORT:", process.env.PORT);
+console.log("Configured PORT:", PORT);
 
 app.listen(PORT, () => {
   console.log(`App listening at port ${PORT}`);
